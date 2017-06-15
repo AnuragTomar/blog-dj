@@ -1,15 +1,14 @@
-<html>
-    <head>
-        <title>Blog Home</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Tech Blog</a></h1>
-        </div>
-	{% for post in posts%}
-			<p><a href="">{{post.title}}</a></p>
-			<p>published on : {{post.published_date}}</p>
-			<p>{{post.text|linebreaksbr}}</p><!--LINEBREAKSBR WILL GIVE YOU PROPER FORMATTING, it will give you text as it is stored in database considering ('\n') and other special chars.-->
-	{% endfor %}
-    </body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}         
+   {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+{% endblock %}
+<!--LINEBREAKSBR WILL GIVE YOU PROPER FORMATTING, it will give you text as it is stored in database considering ('\n') and other special chars.-->
+    
